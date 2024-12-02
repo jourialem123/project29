@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project29</title>
+</head>
+<body>
+    <h2>Using callback for different operations</h2>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <p id="p5"></p>
+    <p id="p6"></p>
+    <script>
+    var obj={name:"Jouri",age:15}
+    var JSONobj=JSON.stringify(obj);
+    var JSONRec=JSON.parse(JSONobj);
+document.getElementById("p1").innerHTML="Hello my name is "+JSONRec.name+" I am "+JSONRec.age+" years old."
+
+async function multiply(a,b){
+var mul= await (a*b);
+show(mul);
+}
+function show(w){
+    document.getElementById("p2").innerHTML="60 x 20 is "+w;
+}
+multiply(20,60);
+
+
+
+
+
+async function divide(c,d){
+    var divi=await (c/d);
+    display(divi);
+}
+function display(e){
+    document.getElementById("p3").innerHTML="60/20 is "+e;
+}
+divide(60,20);
+
+
+
+
+
+
+
+//promises:
+function sub(q,w){
+    var dif=q-w;
+    present(dif);
+}
+function present(j){
+document.getElementById("p4").innerHTML="60 - 20 is "+j;
+}
+//producing code
+let mypromise=new Promise (function(myResolve,myReject){
+    var x=0;
+    if (x==0){
+        myResolve("ok")
+    }
+    else{
+        myReject("error")
+    }
+});
+//consuming code
+mypromise.then(
+function (value) { sub(60,20) },
+  function (error) { sub(error) }
+);
+
+//callback:
+    function tell(s) {
+ document.getElementById("p5").innerHTML ="60 + 20 is "+ s;}
+function add(a,b,k){
+    var sum=a+b;
+k(sum);
+}
+
+
+add(20,60,tell)
+
+    </script>
+</body>
+</html>
